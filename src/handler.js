@@ -36,8 +36,41 @@ if (input === undefined){
 }
 
 document.querySelectorAll('[contenteditable]')[1].removeEventListener('DOMSubtreeModified', listener)
-
 input.addEventListener('DOMSubtreeModified', e => listener(e, rules, input.textContent))
+
+if (container === undefined) {
+    var container = document.createElement('div')
+    var body = document.querySelector('body')
+    var style = document.createElement('style')
+
+    style.type = 'text/css';
+    style.innerHTML = `
+        .container__portdi__float {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 999;
+            background: #c5c5c5;
+            width: 330px;
+            height: 330px;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        .text__portdi__content {
+            word-wrap: break-word;
+        }
+    `
+
+    document.getElementsByTagName('head')[0].appendChild(style)
+}
+
+container.className = `container__portdi__float`
+
+
 
 function listener(e, rules, text) {
 
@@ -46,7 +79,19 @@ function listener(e, rules, text) {
     rules.forEach(rule => {
         if (rule.key.toLowerCase() === text.toLowerCase()){
             let explain = explains.find(ex => ex.id === rule.explainId)
+            
             console.log('[DICA: ]', explain.content)
+
+            container.innerHTML = `
+                <h3>DICA</h3><br/>
+                <p class="text__portdi__content">
+                    ${explain.content}
+                </p>
+            `
+            body.appendChild(container)
+            
         }
     })
 }
+
+

@@ -1,0 +1,12 @@
+.button {
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    background-color: #2a9d8f;
+}
+
+.button:hover {
+    filter: brightness(90%);
+}
