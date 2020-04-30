@@ -42,10 +42,11 @@ if (container === undefined) {
     var container = document.createElement('div')
     var body = document.querySelector('body')
     var style = document.createElement('style')
+    var script = document.createElement('script')
 
-    style.type = 'text/css';
+    style.type = 'text/css'
     style.innerHTML = `
-        .container__portdi__float {
+        .box__portdi__float {
             display: block;
             position: absolute;
             top: 10px;
@@ -63,12 +64,42 @@ if (container === undefined) {
         .text__portdi__content {
             word-wrap: break-word;
         }
+
+        .box__portdi__hide {
+            display: none;
+        }
+
+        .button__portdi__close {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .button__portdi__close button {
+            display: flex;
+            width: 30px;
+            height: 30px;
+            background: #C00;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            color: #fff;
+            font-weight: bold;
+        }
     `
 
-    document.getElementsByTagName('head')[0].appendChild(style)
-}
+    script.type = 'text/javascript'
+    script.innerHTML = `
+        function hideBoxPortdi(){
+            document.querySelector('.box__portdi__float').className = 'box__portdi__hide'
+        }
+    `
+    var [head] = document.getElementsByTagName('head')
 
-container.className = `container__portdi__float`
+    head.appendChild(style)
+    head.appendChild(script)
+}
 
 dragElement(container)
 
@@ -82,7 +113,11 @@ function listener(e, rules, text) {
             
             console.log('[DICA: ]', explain.content)
 
+            container.className = `box__portdi__float`
             container.innerHTML = `
+                <div class="button__portdi__close">
+                    <button onclick="hideBoxPortdi()">X</button>
+                </div>
                 <h3>DICA</h3><br/>
                 <p class="text__portdi__content">
                     ${explain.content}
