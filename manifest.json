@@ -1,6 +1,6 @@
 {
     "name": "Port Di",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Port Di (Portuguease Idea) is a extension for language portuguese",
     "browser_action": {
         "default_popup": "index.html"

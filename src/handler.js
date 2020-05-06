@@ -46,23 +46,33 @@ if (container === undefined) {
 
     style.type = 'text/css'
     style.innerHTML = `
+        @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700|Source+Sans+Pro:300,400,600,700&display=swap");
+
         .box__portdi__float {
             display: block;
             position: absolute;
             top: 10px;
             right: 10px;
             z-index: 999;
-            background: #c5c5c5;
+            background-color: #151728;
+            border-radius: 15px;
             width: 330px;
             height: 330px;
             padding: 10px;
             box-sizing: border-box;
-            border-radius: 10px;
             color: #333;
+        }
+
+        .title__portdi {
+            font-family: "DM Sans", sans-serif;
+            color: #5c5e6e;
+            font-weight: 600;
+            font-size: 18px;
         }
 
         .text__portdi__content {
             word-wrap: break-word;
+            color: #c3c5d5;
         }
 
         .box__portdi__hide {
@@ -79,13 +89,18 @@ if (container === undefined) {
             display: flex;
             width: 30px;
             height: 30px;
-            background: #C00;
             border-radius: 50%;
             justify-content: center;
             align-items: center;
             margin-bottom: 5px;
             color: #fff;
             font-weight: bold;
+
+            background-color: #1b86f9;
+            border: none;
+            color: #fff;
+            box-shadow: 0 0 20px #1b86f9;
+            cursor: pointer;
         }
     `
 
@@ -118,7 +133,7 @@ function listener(e, rules, text) {
                 <div class="button__portdi__close">
                     <button onclick="hideBoxPortdi()">X</button>
                 </div>
-                <h3>DICA</h3><br/>
+                <h3 class="title__portdi">DICA</h3><br/>
                 <p class="text__portdi__content">
                     ${explain.content}
                 </p>
