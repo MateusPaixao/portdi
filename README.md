@@ -1,2 +1,2 @@
 # portdi
-Port Di (Portuguease Idea) is a extension for language portuguese
+Port Di (Portuguese Idea) is a extension for language portuguese
